@@ -29,7 +29,7 @@ class Clients extends CI_Controller {
         public function edit($id = 0) {
         // Titre de la page
         $data['title'] = "Modification d'un client";
-        // Récupération des services
+        // Récupération des status
         $data['marital_status'] = $this->Status->getStatus();
         // Si le formulaire de modification a été submit
         if ($_POST) {
@@ -75,7 +75,7 @@ class Clients extends CI_Controller {
         // Titre de la page
         $data['title'] = "Ajout d'un client";
         // Récupération des status maritaux
-        $data['status'] = $this->Status->getStatus();
+        $data['marital_status'] = $this->Status->getStatus();
         // Mise en place sécurité CSRF
         $csrf = [
             'name' => $this->security->get_csrf_token_name(),
@@ -89,7 +89,8 @@ class Clients extends CI_Controller {
             // form_validation->run() renvoi TRUE si toutes les règles ont été appliquées sans erreurs
             if ($this->form_validation->run() === TRUE) {
                 // On appel la méthodes du model Users servant à la création d'un utilsilateur
-                $this->Users->createUser();
+                $this->Client->createClient();
+
                 // Puis on se redirige vers la page d'accueil
                 redirect(base_url());
             }
