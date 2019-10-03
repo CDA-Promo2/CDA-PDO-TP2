@@ -7,7 +7,9 @@ class Credit extends CI_Model {
     }
 
     public function getCreditsByClient($id) {
-        $query = $this->get_where('Credit', array('id_Client' => $id));
+        $this->db->select(['Credit.*','Credit_Type.type']);
+        $this->db->join('Credit_Type','Credit.id_Credit_Type = Credit_Type.id');
+        $query = $this->db->get_where('Credit', array('id_Client' => $id));
         return $query->result();
     }
 
