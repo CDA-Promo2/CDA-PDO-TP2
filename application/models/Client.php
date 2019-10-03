@@ -17,12 +17,6 @@ class Client extends CI_Model {
         }
         return $query->result();
     }
-    
-    // Méthode pour récupérer les info d'un client
-    public function getClientById($id) {
-        $query = $this->db->get_where('Client', array('id' => $id));
-        return $query->row();
-    }
 
     // Méthode pour récupérer les info d'un client
     public function getClientById($id) {
