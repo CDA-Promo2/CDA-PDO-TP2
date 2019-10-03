@@ -8,13 +8,19 @@ class Client extends CI_Model {
 
     public function getClients() {
         $this->db->select(['Client.*', 'Marital_status.status']);
-        $this->db->join('Marital_status', 'Client.id_Marital_Status = Marital_status.id');
+        $this->db->join('marital_status', 'Client.id_Marital_Status = marital_status.id');
         if (isset($_GET['marital_status']) && $_GET['service']!=0) {
             $query = $this->db->get_where('Client', array('id_Marital_Status' => $_GET['marital_status']));
         } else {
             $query = $this->db->get('Client');
         }
         return $query->result();
+    }
+    
+    // Méthode pour récupérer les info d'un client
+    public function getClientById($id) {
+        $query = $this->db->get_where('Client', array('id' => $id));
+        return $query->row();
     }
 
      public function createClient() {
