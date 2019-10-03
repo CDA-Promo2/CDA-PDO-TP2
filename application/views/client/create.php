@@ -1,35 +1,42 @@
 <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-md-12 col-lg-8 mt-5">
         <?= form_open(); ?>
         <div class="form-group my-1">
-            <?= form_label('Nom de famille :', 'lastname', ['class' => 'essai']); ?>
-            <?= form_input(['name' => 'lastname', 'id' => 'lastname', 'class' => 'form-control']); ?>
+            <label for="lastname">Nom</label> <?= form_error('lastname') ?>
+            <input type="text" id="lastname" name="lastname" class="form-control" value="<?= $client->lastname ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <?= form_label('Prénom :', 'firstname'); ?>
-            <?= form_input(['name' => 'firstname', 'id' => 'firstname', 'class' => 'form-control']); ?>
+            <label for="firstname">Prénom</label> <?= form_error('firstname') ?>
+            <input type="text" id="firstname" name="firstname" class="form-control" value="<?= $client->firstname ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <?= form_label('Date de naissance :', 'birthdate'); ?>
-            <?= form_input(['type' => 'date', 'name' => 'birthdate', 'id' => 'birthdate', 'class' => 'form-control']); ?>
+            <label for="birthdate">Date de naissance</label> <?= form_error('birthdate') ?>
+            <input type="date" id="birthdate" name="birthdate" class="form-control" value="<?= $client->birthdate ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <?= form_label('Code Postal :', 'zipcode'); ?>
-            <?= form_input(['name' => 'zipcode', 'id' => 'zipcode', 'class' => 'form-control']); ?>
+            <label for="address">Adresse</label> <?= form_error('address') ?>
+            <input type="text" id="address" name="address" class="form-control" value="<?= $client->address ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <?= form_label('Numéro de télépone :', 'phone'); ?>
-            <?= form_input(['name' => 'phone', 'id' => 'phone', 'class' => 'form-control']); ?>
+            <label for="zipcode">Code Postal</label> <?= form_error('zipcode') ?>
+            <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?= $client->zipcode ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <?= form_label('Statut marital :', 'status'); ?>
-            <?= form_dropdown('status', ['1' => 'Célibataire', '2' => 'Concubinage', '3' => 'Divorcé', '4' => 'Marié', '5' => 'Veuf']); ?>
+            <label for="phone">Telephone</label> <?= form_error('phone') ?>
+            <input type="text" id="phone" name="phone" class="form-control" value="<?= $client->phone ?? '' ?>">
         </div>
-
+        <div class="form-group my-1">
+            <label for="id_Marital_Status">Statue</label>
+            <select name="id_Marital_Status" class="form-control">
+                <option value="0" selected disabled>Veuillez choisir un Status</option>
+                <?php foreach ($marital_status as $status): ?>
+                    <option value="<?= $status->id ?>" <?= $_POST && $_POST['id_Marital_Status'] == $status->id ? 'selected' : '' ?>><?= $status->id ?>. <?= $status->status ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
         <div class="row justify-content-around my-5">
             <a href="<?= site_url() ?>" class="btn btn-secondary col-4">Retour</a>
-            <?= form_submit('update', 'Valider', ['class' => 'form-control btn btn-success col-4']); ?>
+            <input type="submit" class="form-control btn btn-success col-4" name="update">
         </div>
-        <?= form_close(); ?>
     </div>
 </div>

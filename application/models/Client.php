@@ -7,11 +7,10 @@ class Client extends CI_Model {
     }
 
     public function getClients() {
-
         $this->db->select(['Client.*', 'Marital_Status.status']);
         $this->db->join('Marital_Status', 'Client.id_Marital_Status = Marital_Status.id');
-        if (isset($_GET['marital_status']) && $_GET['service'] != 0) {
-            $query = $this->db->get_where('Client', array('id_Marital_Status' => $_GET['marital_status']));
+        if (isset($_GET['Marital_Status']) && $_GET['service']!=0) {
+            $query = $this->db->get_where('Client', array('id_Marital_Status' => $_GET['marital_Status']));
         } else {
             $query = $this->db->get('Client');
         }
@@ -20,18 +19,14 @@ class Client extends CI_Model {
     
     // Méthode pour récupérer les info d'un client
     public function getClientById($id) {
-        $query = $this->db->get_where('Client', array('id' => $id));
+        $this->db->select(['Client.*','Marital_Status.status']);
+        $this->db->join('Marital_Status', 'Client.id_Marital_Status = Marital_Status.id');
+        $this->db->where('Client.id',$id);
+        $query = $this->db->get('Client');
         return $query->row();
     }
-
-    // Méthode pour récupérer les info d'un client
-    public function getClientById($id) {
-        $query = $this->db->get_where('Client', array('id' => $id));
-        return $query->row();
-    }
-
-    public function createClient() {
-        $id = $this->input->post('id');
+    
+     public function createClient() {
         $data = [
             'lastname' => $this->input->post('lastname'),
             'firstname' => $this->input->post('firstname'),
@@ -41,12 +36,7 @@ class Client extends CI_Model {
             'phone' => $this->input->post('phone'),
             'id_Marital_Status' => $this->input->post('id_Marital_Status'),
         ];
-        if (empty($id)) {
-            return $this->db->insert('Client', $data);
-        } else {
-            $this->db->where('id', $id);
-            return $this->db->update('Client', $data);
-        }
+        return $this->db->insert('Client', $data);
     }
 
     public function updateClient($id) {
@@ -59,7 +49,6 @@ class Client extends CI_Model {
             'phone' => $this->input->post('phone'),
             'id_Marital_Status' => $this->input->post('id_Marital_Status'),
         );
-
         $this->db->where('id', $id);
         return $this->db->update('Client', $data);
     }
