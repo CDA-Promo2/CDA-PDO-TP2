@@ -1,0 +1,13 @@
+body {
+    background-color: whitesmoke;
+}
+
+.h1, h1 {
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+hr {
+    border: solid black 1px;
+    width: 15%;
+}

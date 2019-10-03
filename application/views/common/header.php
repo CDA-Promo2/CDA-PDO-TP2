@@ -28,3 +28,4 @@
             </header>
             <main class="py-5 mt-5">
                 <h1 class="text-center"><?= $title ?></h1>
+                <hr>
