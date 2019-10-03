@@ -7,9 +7,9 @@ class Client extends CI_Model {
     }
 
     public function getClients() {
-        $this->db->select(['Client.*', 'Marital_status.status']);
-        $this->db->join('Marital_status', 'Client.id_Marital_Status = Marital_status.id');
-        if (isset($_GET['marital_status']) && $_GET['service']!=0) {
+        $this->db->select(['Client.*', 'Marital_Status.status']);
+        $this->db->join('Marital_Status', 'Client.id_Marital_Status = Marital_Status.id');
+        if (isset($_GET['marital_status']) && $_GET['service'] != 0) {
             $query = $this->db->get_where('Client', array('id_Marital_Status' => $_GET['marital_status']));
         } else {
             $query = $this->db->get('Client');
@@ -17,7 +17,13 @@ class Client extends CI_Model {
         return $query->result();
     }
 
-     public function createClient() {
+    // Méthode pour récupérer les info d'un client
+    public function getClientById($id) {
+        $query = $this->db->get_where('Client', array('id' => $id));
+        return $query->row();
+    }
+
+    public function createClient() {
         $id = $this->input->post('id');
         $data = [
             'lastname' => $this->input->post('lastname'),
@@ -35,7 +41,7 @@ class Client extends CI_Model {
             return $this->db->update('Client', $data);
         }
     }
-    
+
     public function updateClient($id) {
         $data = array(
             'lastname' => $this->input->post('lastname'),
@@ -50,9 +56,9 @@ class Client extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->update('Client', $data);
     }
-    
-    public function deleteClient($id){
-        $this->db->where('id',$id);
+
+    public function deleteClient($id) {
+        $this->db->where('id', $id);
         return $this->db->delete('Client');
     }
 
