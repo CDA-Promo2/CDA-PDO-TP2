@@ -90,6 +90,7 @@ class Clients extends CI_Controller {
             if ($this->form_validation->run() === TRUE) {
                 // On appel la méthodes du model Users servant à la création d'un utilsilateur
                 $this->Client->createClient();
+
                 // Puis on se redirige vers la page d'accueil
                 redirect(base_url());
             }

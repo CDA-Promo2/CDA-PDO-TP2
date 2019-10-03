@@ -7,6 +7,7 @@ class Client extends CI_Model {
     }
 
     public function getClients() {
+
         $this->db->select(['Client.*', 'Marital_Status.status']);
         $this->db->join('Marital_Status', 'Client.id_Marital_Status = Marital_Status.id');
         if (isset($_GET['marital_status']) && $_GET['service'] != 0) {
