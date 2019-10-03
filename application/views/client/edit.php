@@ -1,6 +1,5 @@
 <div class="row justify-content-center">
-    <div class="col-md-12 col-lg-8 mt-5">
-        <?= form_open(); ?>
+    <form action="<?= site_url('edit/' . $client->id) ?>" method="post" class="col-md-12 col-lg-8 mt-5">
         <div class="form-group my-1">
             <label for="lastname">Nom</label> <?= form_error('lastname') ?>
             <input type="text" id="lastname" name="lastname" class="form-control" value="<?= $client->lastname ?? '' ?>">
@@ -30,7 +29,7 @@
             <select name="id_Marital_Status" class="form-control">
                 <option value="0" selected disabled>Veuillez choisir un Status</option>
                 <?php foreach ($marital_status as $status): ?>
-                    <option value="<?= $status->id ?>" <?= $_POST && $_POST['id_Marital_Status'] == $status->id ? 'selected' : '' ?>><?= $status->id ?>. <?= $status->status ?></option>
+                    <option value="<?= $status->id ?>" <?= $client->id_Marital_Status == $status->id ? 'selected' : '' ?>><?= $status->id ?>. <?= $status->status ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -38,5 +37,5 @@
             <a href="<?= site_url() ?>" class="btn btn-secondary col-4">Retour</a>
             <input type="submit" class="form-control btn btn-success col-4" name="update">
         </div>
-    </div>
+    </form>
 </div>
