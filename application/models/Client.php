@@ -19,7 +19,7 @@ class Client extends CI_Model {
 
      public function createClient() {
         $id = $this->input->post('id');
-        $data = array(
+        $data = [
             'lastname' => $this->input->post('lastname'),
             'firstname' => $this->input->post('firstname'),
             'birthdate' => $this->input->post('birthdate'),
@@ -27,7 +27,7 @@ class Client extends CI_Model {
             'zipcode' => $this->input->post('zipcode'),
             'phone' => $this->input->post('phone'),
             'id_Marital_Status' => $this->input->post('id_Marital_Status'),
-        );
+        ];
         if (empty($id)) {
             return $this->db->insert('Client', $data);
         } else {
