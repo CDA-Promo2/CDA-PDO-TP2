@@ -59,6 +59,7 @@ class Client extends CI_Model {
             'phone' => $this->input->post('phone'),
             'id_Marital_Status' => $this->input->post('id_Marital_Status'),
         ];
+        $data = $this->security->xss_clean($data);
         return $this->db->insert('Client', $data);
     }
 
@@ -73,6 +74,7 @@ class Client extends CI_Model {
             'id_Marital_Status' => $this->input->post('id_Marital_Status'),
         );
         $this->db->where('id', $id);
+        $data = $this->security->xss_clean($data);
         return $this->db->update('Client', $data);
     }
 

@@ -8,7 +8,7 @@
         <p class="text-muted text-center"><?= date_diff(date_create($client->birthdate), date_create('now'))->y . 'ans, ' . $client->status ?></p>
         <div class="row mt-5">
             <div class="col-6">
-                <img src="<?= base_url('assets/img/avatar.jpg') ?>" alt="photo de <?= $client->firstname . ' ' . $client->lastname ?>" class="img-fluid">
+                <img src="<?= file_exists('uploads/profil'.$client->id.'.jpg') ? '/uploads/profil'.$client->id.'.jpg' : base_url('assets/img/avatar.jpg') ?>" alt="photo de <?= $client->firstname . ' ' . $client->lastname ?>" class="img-fluid">
             </div>
             <div class="col-6">
                 <h3 class="text-center">Informations personnelles</h3>
