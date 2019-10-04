@@ -78,7 +78,7 @@ class Credits extends CI_Controller {
     // Méthodes gérant la suppression d'un crédit
     public function delete() {
         // On récupère l'id du crédit que l'on souhaite supprimer
-        $id = $this->uri->segment(2);
+        $id = $this->uri->segment(3);
         // S'il n'y a pas d'id -> page 404
         if (empty($id)) {
             show_404();

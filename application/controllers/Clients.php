@@ -48,7 +48,8 @@ class Clients extends CI_Controller {
         $data['title'] = 'Informations du client';
         $data['client'] = $this->Client->getClientById($id);
         $data['credits'] = $this->Credit->getCreditsByClient($id);
-
+        
+        
         $this->load->view('common/header', $data);
         $this->load->view('client/details', $data);
         $this->load->view('common/footer', $data);

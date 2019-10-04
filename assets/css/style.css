@@ -18,3 +18,8 @@ hr {
     background-size: 100%;
     background-position: bottom;
 }
+
+#scroll {
+    max-height: 70% !important;
+    overflow-y: auto;
+}
