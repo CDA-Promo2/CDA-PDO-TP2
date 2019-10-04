@@ -1,3 +1,5 @@
+<h1 class="text-center"><?= $title ?></h1>
+<hr>
 <div class="row justify-content-around mt-5">
     <!--informations clients-->
     <div class="card rounded p-4 col-md-5 shadow">
@@ -8,7 +10,7 @@
         <p class="text-muted text-center"><?= date_diff(date_create($client->birthdate), date_create('now'))->y . 'ans, ' . $client->status ?></p>
         <div class="row mt-5">
             <div class="col-6">
-                <img src="<?= file_exists('uploads/profil'.$client->id.'.jpg') ? '/uploads/profil'.$client->id.'.jpg' : base_url('assets/img/avatar.jpg') ?>" alt="photo de <?= $client->firstname . ' ' . $client->lastname ?>" class="img-fluid">
+                <img src="<?= file_exists('uploads/profil' . $client->id . '.jpg') ? '/uploads/profil' . $client->id . '.jpg' : base_url('assets/img/avatar.jpg') ?>" alt="photo de <?= $client->firstname . ' ' . $client->lastname ?>" class="img-fluid">
             </div>
             <div class="col-6">
                 <h3 class="text-center">Informations personnelles</h3>
@@ -61,7 +63,7 @@
                             <td><?= $credit->total ?>€</td>
                             <td><?= $credit->remaining ?>€</td>
                             <td><?= $credit->rate ?>%</td>
-                            <td><?= $credit->negotiable==1? 'oui' : 'non' ?></td>
+                            <td><?= $credit->negotiable == 1 ? 'oui' : 'non' ?></td>
                             <td>
                                 <a href="<?= site_url('credit/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
                                 <a type="button" data-toggle="modal" data-target="#delete<?= $credit->id ?>"><i class="fas fa-trash-alt text-danger"></i></i></a>
@@ -79,17 +81,17 @@
 
 
 <?php foreach ($credits as $credit) { ?>
-            <div class="modal fade" id="delete<?= $credit->id ?>" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content text-center">
-                        <h2 class="bg-dark text-white p-2">Attention</h2>
-                        <p>Voulez-vous vraiment supprimer ce crédit?</p>
-                        <p>Type de crédit : <b><?= $credit->type ?></b></p>
-                        <p>Il reste <b><?= $credit->remaining ?></b>€ au crédit</p>
-                        <div class="row justify-content-center">
-                            <a href="<?= site_url('credit/delete/' . $credit->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
-                        </div>
-                    </div>
+    <div class="modal fade" id="delete<?= $credit->id ?>" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content text-center">
+                <h2 class="bg-dark text-white p-2">Attention</h2>
+                <p>Voulez-vous vraiment supprimer ce crédit?</p>
+                <p>Type de crédit : <b><?= $credit->type ?></b></p>
+                <p>Il reste <b><?= $credit->remaining ?></b>€ au crédit</p>
+                <div class="row justify-content-center">
+                    <a href="<?= site_url('credit/delete/' . $credit->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
                 </div>
             </div>
+        </div>
+    </div>
 <?php } ?>

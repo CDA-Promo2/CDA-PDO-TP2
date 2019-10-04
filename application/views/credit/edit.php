@@ -1,3 +1,5 @@
+<h1 class="text-center"><?= $title ?></h1>
+<hr>
 <div class="row justify-content-center">
     <form action="<?= site_url('edit/' . $credit->id) ?>" method="post" class="col-md-12 col-lg-8 mt-5">
         <div class="form-group my-1">
@@ -20,7 +22,7 @@
             <label for="negotiable">Negociable</label> <?= form_error('negotiable') ?>
             <input type="text" id="negotiable" name="negotiable" class="form-control" value="<?= $credit->negotiable ?? '' ?>">
         </div>
-           <div class="form-group my-1">
+        <div class="form-group my-1">
             <label for="id_Credit_Type">Type de crédit</label>
             <select name="id_Credit_Type" class="form-control">
                 <option value="0" selected disabled>Veuillez choisir un Status</option>

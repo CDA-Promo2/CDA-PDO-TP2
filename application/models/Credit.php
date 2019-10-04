@@ -6,6 +6,16 @@ class Credit extends CI_Model {
         $this->load->database();
     }
 
+    public function countCredits(){
+        return $this->db->count_all('Credit');
+    }
+    
+    public function sumCredits(){
+        $this->db->select_sum('total');
+        $query = $this->db->get('Credit');
+        return $query->result()[0]->total;
+    }
+    
     public function getCreditsByClient($id) {
         $this->db->select(['Credit.*','Credit_Type.type']);
         $this->db->join('Credit_Type','Credit.id_Credit_Type = Credit_Type.id');

@@ -13,8 +13,29 @@ hr {
 }
 
 #background {
+    position: relative;
+    z-index: -1;
+    top: -32px;
     background-image: url(../img/bank.jpg);
-    height: 60vh;
-    background-size: 100%;
-    background-position: bottom;
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: -160px;
+}
+
+.bigLink_container{
+    position: relative;
+    z-index: 1;
+    top: -60vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bigLink{
+    display: block;
+    width: 40vw;
+    height: 40vh;
+    background-color: #000000AA;
+    border-radius:10px;
+    color: white;
 }
