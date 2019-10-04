@@ -1,7 +1,7 @@
 <h1 class="text-center"><?= $title ?></h1>
 <hr>
-<div class="row form justify-content-center">
-    <div class="col-md-12 col-lg-6">
+<div class="row justify-content-center">
+    <div class="form col-md-6 col-lg-6">
         <?= form_open() ?>
         <h2 class="text-center mt-3 mb-5"><?= $client->lastname ?> <?= $client->firstname ?></h2>
         <div class="form-group my-1">

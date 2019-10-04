@@ -1,9 +1,9 @@
 <div class="row justify-content-around bigLink_container">
     <section class="bigLink p-5 text-center">
         <h2 class="text-center mb-5">Statisiques</h2>
-        <h3 class="my-1"><b><?= $totalClient ?></b> clients enregistrés</h3>
-        <h3 class="my-1"><b><?= $totalCredit ?></b> crédits contractés</h3>
-        <h3 class="my-1"><b><?= $sumCredit ?>€</b> de crédit enregistrés</h3>
+        <h3 class="my-1 lead"><b><?= $totalClient ?></b> clients enregistrés</h3>
+        <h3 class="my-1 lead"><b><?= $totalCredit ?></b> crédits contractés</h3>
+        <h3 class="my-1 lead"><b><?= $sumCredit ?>€</b> de crédit enregistrés</h3>
     </section>
     <section class="bigLink p-5">
         <h2 class="text-center">Gestion des clients</h2>
