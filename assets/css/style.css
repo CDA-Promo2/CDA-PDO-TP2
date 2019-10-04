@@ -1,5 +1,13 @@
 body {
+    background-image: url(../img/bank.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.form{
+    padding: 20px;
     background-color: whitesmoke;
+    border-radius: 20px;
 }
 
 .h1, h1 {
@@ -12,21 +20,10 @@ hr {
     width: 15%;
 }
 
-#background {
-    position: relative;
-    z-index: -1;
-    top: -32px;
-    background-image: url(../img/bank.jpg);
-    height: 100vh;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position-y: -160px;
-}
-
 .bigLink_container{
+    top: 30vh;
     position: relative;
     z-index: 1;
-    top: -60vh;
     display: flex;
     justify-content: space-around;
 }
