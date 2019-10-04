@@ -16,6 +16,9 @@ class Clients extends CI_Controller {
         // On passera dans le tableau data toutes les informations utiles pour la vue
         // Le titre de la page
         $data['title'] = "Accueil";
+        $data['totalClient'] = $this->Client->countAll();
+        $data['totalCredit'] = $this->Credit->countCredits();
+        $data['sumCredit'] = $this->Credit->sumCredits();
         // Chargement des différentes vue, avec envoi du tableau data
         $this->load->view('common/header', $data);
         $this->load->view('client/index', $data);

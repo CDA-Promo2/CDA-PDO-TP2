@@ -1,3 +1,5 @@
+<h1 class="text-center"><?= $title ?></h1>
+<hr>
 <div class="row justify-content-around mt-5">
     <!--informations clients-->
     <div class="card rounded p-4 col-md-5 shadow">
@@ -8,7 +10,7 @@
         <p class="text-muted text-center"><?= date_diff(date_create($client->birthdate), date_create('now'))->y . 'ans, ' . $client->status ?></p>
         <div class="row mt-5">
             <div class="col-6">
-                <img src="<?= file_exists('uploads/profil'.$client->id.'.jpg') ? '/uploads/profil'.$client->id.'.jpg' : base_url('assets/img/avatar.jpg') ?>" alt="photo de <?= $client->firstname . ' ' . $client->lastname ?>" class="img-fluid">
+                <img src="<?= file_exists('uploads/profil' . $client->id . '.jpg') ? '/uploads/profil' . $client->id . '.jpg' : base_url('assets/img/avatar.jpg') ?>" alt="photo de <?= $client->firstname . ' ' . $client->lastname ?>" class="img-fluid">
             </div>
             <div class="col-6">
                 <h3 class="text-center">Informations personnelles</h3>
@@ -28,7 +30,7 @@
                     </li>
                 </ul>
                 <div class="row justify-content-end mt-auto">
-                    <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
+                    <a href="<?= site_url('clientsList') ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
                     <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-primary text-white mx-3"><i class="fas fa-pen"></i> Modifier</a>
                 </div>
             </div>
@@ -61,9 +63,9 @@
                             <td><?= $credit->total ?>€</td>
                             <td><?= $credit->remaining ?>€</td>
                             <td><?= $credit->rate ?>%</td>
-                            <td><?= $credit->negotiable==1? 'oui' : 'non' ?></td>
+                            <td><?= $credit->negotiable == 1 ? 'oui' : 'non' ?></td>
                             <td>
-                                <a href="<?= site_url('credit/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
+                                <a href="<?= site_url('credits/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
                                 <a type="button" data-toggle="modal" data-target="#delete<?= $credit->id ?>"><i class="fas fa-trash-alt text-danger"></i></i></a>
                             </td>
                         </tr>
@@ -72,7 +74,7 @@
             </table>
         </div>
         <div class="row justify-content-end mt-auto">
-            <a class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
+            <a href="<?= site_url('credits/create/'.$client->id) ?>" class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
         </div>
     </div>
 </div>
