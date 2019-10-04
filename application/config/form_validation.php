@@ -1,7 +1,7 @@
 <?php
 
 $config = [
-    'user/create' => [
+    'clients/create' => [
             [
             'field' => 'lastname',
             'label' => 'Nom de famille',
