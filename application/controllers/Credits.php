@@ -26,7 +26,7 @@ class Credits extends CI_Controller {
             // On appel la méthodes du model Client afin de mettre à jour le client d'id = $id
             $this->Credit->updateCredit($id);
             // Puis on se redirige vers l'accueil
-            redirect(site_url());
+            redirect(site_url('clientsList'));
         }
         // Si les informations sont vides, alors le client d'id = $id n'existe pas
         if (empty($data['credit'])) {
@@ -55,7 +55,7 @@ class Credits extends CI_Controller {
         if ($this->form_validation->run() === TRUE) {
             $this->Credit->createCredit($id);
             // Puis on se redirige vers la page d'accueil
-            redirect(site_url());
+            redirect(site_url('clientsList'));
         }
         // Chargement des différentes vues servant à la création d'un utilisateur
         $this->load->view('common/header', $data);
@@ -73,7 +73,7 @@ class Credits extends CI_Controller {
         } else {
             // On appel la méthodes du model Crédit afin de supprimer le crédit d'id = $id
             $credit = $this->Credit->deleteCredit($id);
-            redirect('');
+            redirect(site_url('clientsList'));
         }
     }
 
