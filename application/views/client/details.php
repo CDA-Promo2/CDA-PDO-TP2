@@ -28,13 +28,14 @@
                     </li>
                 </ul>
                 <div class="row justify-content-end mt-auto">
-                    <a class="btn btn-primary text-white"><i class="fas fa-pen"></i> Modifier les informations</a>
+                    <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
+                    <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-primary text-white mx-3"><i class="fas fa-pen"></i> Modifier</a>
                 </div>
             </div>
         </div>
     </div>
     <!--liste des credits-->
-    <div class="card rounded p-4 col-md-5 shadow">
+    <div class="card rounded p-4 col-md-6 shadow">
         <div class="position-absolute z-index-1">
             <i class="fas fa-coins fa-4x text-info"></i>
         </div>
@@ -71,7 +72,7 @@
             </table>
         </div>
         <div class="row justify-content-end mt-auto">
-            <a class="btn btn-primary text-white"><i class="fas fa-coins"></i> Ajouter un crédit</a>
+            <a class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
         </div>
     </div>
 </div>

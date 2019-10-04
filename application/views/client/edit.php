@@ -34,7 +34,7 @@
             </select>
         </div>
         <div class="row justify-content-around my-5">
-            <a href="<?= site_url() ?>" class="btn btn-secondary col-4">Retour</a>
+            <a href="<?= site_url('details/' . $client->id) ?>" class="btn btn-secondary col-4">Retour</a>
             <input type="submit" class="form-control btn btn-success col-4" name="update">
         </div>
     </form>

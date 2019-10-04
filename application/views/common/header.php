@@ -20,8 +20,8 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a href="<?=site_url()?>" class="text-white nav-link"><i class="fas fa-list"></i> Liste des utilisateurs</a></li>
-                            <li class="nav-item"><a href="<?=site_url('create')?>" class="text-white nav-link"><i class="fas fa-plus"></i> Ajouter un utilisateur</a></li>
+                            <li class="nav-item"><a href="<?=site_url()?>" class="text-white nav-link"><i class="fas fa-list"></i> Liste des clients</a></li>
+                            <li class="nav-item"><a href="<?=site_url('create')?>" class="text-white nav-link"><i class="fas fa-plus"></i> Ajouter un client</a></li>
                         </ul>
                     </div>
                 </nav>

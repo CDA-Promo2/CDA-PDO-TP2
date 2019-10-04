@@ -7,13 +7,17 @@ class Client extends CI_Model {
     }
 
     public function getClients() {
-        $this->db->select(['Client.*', 'Marital_Status.status']);
+        $this->db->select(['Client.*', 'Marital_Status.status', 'sum(Credit.remaining) as remaining', 'count(Credit.id) as credits']);
         $this->db->join('Marital_Status', 'Client.id_Marital_Status = Marital_Status.id');
+        $this->db->join('Credit', 'Client.id = Credit.id_Client', 'left');
+        $this->db->group_by('Client.id');
         if (isset($_GET['Marital_Status']) && $_GET['service']!=0) {
             $query = $this->db->get_where('Client', array('id_Marital_Status' => $_GET['marital_Status']));
         } else {
             $query = $this->db->get('Client');
         }
+//        var_dump($query->result());
+//        die();
         return $query->result();
     }
     

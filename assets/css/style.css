@@ -11,3 +11,10 @@ hr {
     border: solid black 1px;
     width: 15%;
 }
+
+#background {
+    background-image: url(../img/bank.jpg);
+    height: 60vh;
+    background-size: 100%;
+    background-position: bottom;
+}
