@@ -8,7 +8,7 @@ class Clients extends CI_Controller {
         parent::__construct();
         $this->load->model(['Client', 'Credit', 'Status']);
         $this->load->helper(['url', 'form', 'date']);
-        $this->load->library('form_validation');
+        $this->load->library(['form_validation']);
     }
 
     // Méthode gérant la page d'accueil
@@ -97,23 +97,44 @@ class Clients extends CI_Controller {
         $data['title'] = "Ajout d'un client";
         // Récupération des status maritaux
         $data['marital_status'] = $this->Status->getStatus();
-        // Mise en place sécurité CSRF
-        $csrf = [
-            'name' => $this->security->get_csrf_token_name(),
-            'hash' => $this->security->get_csrf_hash()
-        ];
+ 
         // Si le formulaire de création a été submit
         if ($_POST) {
+            // Configuration pour l'upload
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'jpg';
+            $config['max_size'] = 1024;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+
             // Modification de l'affichage des erreurs
             $this->form_validation->set_error_delimiters('<small class="alert alert-danger p-1 ml-1 ">', '</small>');
             // S'il n'y a pas d'erreurs lors de l'application des règles de vérification
             // form_validation->run() renvoi TRUE si toutes les règles ont été appliquées sans erreurs
-            if ($this->form_validation->run() === TRUE) {
+            if ($this->form_validation->run()) {
+
                 // On appel la méthodes du model Users servant à la création d'un utilsilateur
                 $this->Client->createClient();
-
-                // Puis on se redirige vers la page d'accueil
-                redirect(base_url());
+                // Récupération du dernier ID enregistré
+                $lastId = $this->db->insert_id();
+                // Si l'upload réussi
+                if ($this->upload->do_upload('image')) {
+                    // On récupère les informations de l'image upload
+                    $dataUpload = $this->upload->data();
+                    // On compose une variale contenant le nouveau nom de l'image
+                    $newName = $dataUpload['file_path'].'profil'.$lastId.$dataUpload['file_ext'];
+                    // Puis on renomme l'image
+                    rename($dataUpload['full_path'], $newName);
+                    // On récupère les informations de l'image uploadée
+                    // Puis on se redirige vers la page d'accueil
+                    redirect(base_url());
+                // Sinon
+                } else {
+                    // On récupère l'erreur de l'upload
+                    $data['uploadError'] = $this->upload->display_errors('<small class="alert alert-danger p-1 ml-1 ">', '</small>');
+                }
             }
         }
         // Chargement des différentes vues servant à la création d'un utilisateur
