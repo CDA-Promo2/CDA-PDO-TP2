@@ -1,18 +1,20 @@
+<h1 class="text-center"><?= $title ?></h1>
+<hr>
 <div class="row justify-content-center mt-4">
     <div class="col-md-6">
         <div class="row justify-content-center my-1">
             <form action="" method="get">
-                <input type="text" name="search" placeholder="Rechercher" value="<?=isset($_GET['search'])?$_GET['search']:''?>">
+                <input type="text" name="search" placeholder="rechercher" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
             </form>
         </div>
         <table class="table table-hover text-center shadow border bg-white">
             <thead class="thead-dark">
                 <tr>
-                    <th><a href="?sortBy=lastname&<?=isset($_GET['ASC'])?'DESC':'ASC'?><?=isset($_GET['search'])?'&search='.$_GET['search']:''?>" class="text-white"><i class="fas fa-sort-down"></i> Nom</a></th>
-                    <th><a href="?sortBy=firstname&<?=isset($_GET['ASC'])?'DESC':'ASC'?><?=isset($_GET['search'])?'&search='.$_GET['search']:''?>" class="text-white"><i class="fas fa-sort-down"></i> Prénom</a></th>
-                    <th><a href="?sortBy=credits&<?=isset($_GET['ASC'])?'DESC':'ASC'?><?=isset($_GET['search'])?'&search='.$_GET['search']:''?>" class="text-white"><i class="fas fa-sort-down"></i> Crédit</a></th>
-                    <th><a href="?sortBy=remaining&<?=isset($_GET['ASC'])?'DESC':'ASC'?><?=isset($_GET['search'])?'&search='.$_GET['search']:''?>" class="text-white"><i class="fas fa-sort-down"></i> Montant total</a></th>
+                    <th><a href="?sortBy=lastname&<?= isset($_GET['ASC']) ? 'DESC' : 'ASC' ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" class="text-white"><i class="fas fa-sort-down"></i> Nom</a></th>
+                    <th><a href="?sortBy=firstname&<?= isset($_GET['ASC']) ? 'DESC' : 'ASC' ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" class="text-white"><i class="fas fa-sort-down"></i> Prénom</a></th>
+                    <th><a href="?sortBy=credits&<?= isset($_GET['ASC']) ? 'DESC' : 'ASC' ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" class="text-white"><i class="fas fa-sort-down"></i> Crédit</a></th>
+                    <th><a href="?sortBy=remaining&<?= isset($_GET['ASC']) ? 'DESC' : 'ASC' ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" class="text-white"><i class="fas fa-sort-down"></i> Montant total</a></th>
                     <th></th>
                 </tr>
             </thead>

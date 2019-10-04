@@ -1,3 +1,5 @@
+<h1 class="text-center"><?= $title ?></h1>
+<hr>
 <div class="row justify-content-center">
     <form action="<?= site_url('edit/' . $client->id) ?>" method="post" class="col-md-12 col-lg-8 mt-5">
         <div class="form-group my-1">
