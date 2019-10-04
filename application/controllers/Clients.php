@@ -147,7 +147,7 @@ class Clients extends CI_Controller {
         }
         // Chargement des différentes vues servant à la création d'un utilisateur
         $this->load->view('common/header', $data);
-        $this->load->view('client/create', [$data, 'csrf' => $csrf]);
+        $this->load->view('client/create', $data);
         $this->load->view('common/footer', $data);
     }
 
