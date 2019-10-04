@@ -30,7 +30,7 @@
                     </li>
                 </ul>
                 <div class="row justify-content-end mt-auto">
-                    <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
+                    <a href="<?= site_url('clientsList') ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
                     <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-primary text-white mx-3"><i class="fas fa-pen"></i> Modifier</a>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                             <td><?= $credit->rate ?>%</td>
                             <td><?= $credit->negotiable == 1 ? 'oui' : 'non' ?></td>
                             <td>
-                                <a href="<?= site_url('credit/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
+                                <a href="<?= site_url('credits/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
                                 <a type="button" data-toggle="modal" data-target="#delete<?= $credit->id ?>"><i class="fas fa-trash-alt text-danger"></i></i></a>
                             </td>
                         </tr>
@@ -74,7 +74,7 @@
             </table>
         </div>
         <div class="row justify-content-end mt-auto">
-            <a class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
+            <a href="<?= site_url('credits/create/'.$client->id) ?>" class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
         </div>
     </div>
 </div>

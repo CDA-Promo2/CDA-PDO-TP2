@@ -1,33 +1,34 @@
 <h1 class="text-center"><?= $title ?></h1>
 <hr>
 <div class="row justify-content-center">
-    <form action="<?= site_url('create/' . $credit->id) ?>" method="post" class="col-md-12 col-lg-8 mt-5">
+    <div class="col-md-12 col-lg-6">
+        <?= form_open() ?>
+        <h2 class="text-center mt-3 mb-5"><?= $client->lastname ?> <?= $client->firstname ?></h2>
         <div class="form-group my-1">
-            <label for="company">Entreprise</label> <?= form_error('company') ?>
-            <input type="text" id="company" name="company" class="form-control" value="<?= $credit->company ?? '' ?>">
+            <label for="company">Entreprise :</label> <?= form_error('company') ?>
+            <input type="text" id="company" name="company" class="form-control" value="<?= $_POST['company'] ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <label for="rate">Taux</label> <?= form_error('rate') ?>
-            <input type="text" id="rate" name="rate" class="form-control" value="<?= $credit->rate ?? '' ?>">
+            <label for="rate">Taux :</label> <?= form_error('rate') ?>
+            <input type="text" id="rate" name="rate" class="form-control" value="<?= $_POST['rate'] ?? '' ?>">
         </div>
         <div class="form-group my-1">
-            <label for="total">Total</label> <?= form_error('total') ?>
-            <input type="date" id="total" name="total" class="form-control" value="<?= $credit->total ?? '' ?>">
+            <label for="total">Valeur emprunt :</label> <?= form_error('total') ?>
+            <input type="text" id="total" name="total" class="form-control" value="<?= $_POST['total'] ?? '' ?>">
+        </div>
+        <div class="form-group my-3">
+            <label for="negotiable">Negociable ? </label> <?= form_error('negotiable') ?>
+            <select name="negotiable" id="negotiable">
+                <option value="0">Non</option>
+                <option value="1">Oui</option>
+            </select>
         </div>
         <div class="form-group my-1">
-            <label for="remaining">Restant</label> <?= form_error('remaining') ?>
-            <input type="text" id="remaining" name="remaining" class="form-control" value="<?= $credit->remaining ?? '' ?>">
-        </div>
-        <div class="form-group my-1">
-            <label for="negotiable">Negociable</label> <?= form_error('negotiable') ?>
-            <input type="text" id="negotiable" name="negotiable" class="form-control" value="<?= $credit->negotiable ?? '' ?>">
-        </div>
-        <div class="form-group my-1">
-            <label for="id_Credit_Type">Type de crédit</label>
-            <select name="id_Credit_Type" class="form-control">
-                <option value="0" selected disabled>Veuillez choisir un Status</option>
-                <?php foreach ($marital_status as $typeCredit): ?>
-                    <option value="<?= $typeCredit->id ?>" <?= $typeCredit->id_Credit_Type == $typeCredit->id ? 'selected' : '' ?>><?= $typeCredit->id ?>. <?= $typeCredit->status ?></option>
+            <label for="credit_Type">Type de crédit :</label>
+            <select name="credit_Type" class="form-control">
+                <option value="0" selected disabled>Veuillez choisir un type de crédit</option>
+                <?php foreach ($Credit_Types as $typeCredit): ?>
+                    <option value="<?= $typeCredit->id ?>" <?= $_POST && $_POST['credit_Type'] == $typeCredit->id ? 'selected' : '' ?>><?= $typeCredit->id ?>. <?= $typeCredit->type ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -35,5 +36,6 @@
             <a href="<?= site_url('details/' . $client->id) ?>" class="btn btn-secondary col-4">Retour</a>
             <input type="submit" class="form-control btn btn-success col-4" name="update">
         </div>
-    </form>
+        <?= form_close() ?>
+    </div>
 </div>
