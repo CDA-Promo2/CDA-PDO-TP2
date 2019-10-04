@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="row justify-content-center my-1">
             <form action="" method="get">
-                <input type="text" name="search" placeholder="rechercher" value="<?=isset($_GET['search'])?$_GET['search']:''?>">
+                <input type="text" name="search" placeholder="Rechercher" value="<?=isset($_GET['search'])?$_GET['search']:''?>">
                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
             </form>
         </div>
