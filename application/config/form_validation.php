@@ -10,7 +10,7 @@ $config = [
             [
             'field' => 'firstname',
             'label' => 'Prénom',
-            'rules' => 'trim|required|max_length[50]|alpha'
+            'rules' => 'trim|required|max_length[50]|alpha  '
         ],
             [
             'field' => 'birthdate',
