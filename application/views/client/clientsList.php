@@ -40,11 +40,16 @@
             <div class="modal fade" id="delete<?= $client->id ?>" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content text-center">
+                        <?php if ($client->credits > 0) { ?>
+                       <h2 class="bg-dark text-white p-2">Le client à encore des crédits en cours</h2>
+                       <p class="text-warning"> /!\ Veuillez d'abord supprimer les crédits en cours avant de supprimer le client</p>
+                        <?php  } else { ?>
                         <h2 class="bg-dark text-white p-2">Attention</h2>
                         <p>Voulez-vous supprimer <b><?= $client->firstname . ' ' . $client->lastname ?></b>?</p>
                         <div class="row justify-content-center">
                             <a href="<?= site_url('delete/' . $client->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
                         </div>
+                        <?php  } ?>
                     </div>
                 </div>
             </div>

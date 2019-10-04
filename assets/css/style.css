@@ -39,3 +39,7 @@ hr {
     border-radius:10px;
     color: white;
 }
+#scroll {
+    max-height: 70% !important;
+    overflow-y: auto;
+}

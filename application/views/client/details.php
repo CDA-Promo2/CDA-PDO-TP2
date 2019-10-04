@@ -42,8 +42,8 @@
             <i class="fas fa-coins fa-4x text-info"></i>
         </div>
         <h2 class="text-center">Crédits en cours</h2>
-        <div class="row mt-5">
-            <table class="table table-hover mt-4">
+        <div id="scroll" class="row mt-5 table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped table-bordered table-sm">
                 <thead>
                     <tr>
                         <th>Organisme</th>
@@ -81,17 +81,17 @@
 
 
 <?php foreach ($credits as $credit) { ?>
-    <div class="modal fade" id="delete<?= $credit->id ?>" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content text-center">
-                <h2 class="bg-dark text-white p-2">Attention</h2>
-                <p>Voulez-vous vraiment supprimer ce crédit?</p>
-                <p>Type de crédit : <b><?= $credit->type ?></b></p>
-                <p>Il reste <b><?= $credit->remaining ?></b>€ au crédit</p>
-                <div class="row justify-content-center">
-                    <a href="<?= site_url('credit/delete/' . $credit->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
+            <div class="modal fade" id="delete<?= $credit->id ?>" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content text-center">
+                        <h2 class="bg-dark text-white p-2">Attention</h2>
+                        <p>Voulez-vous vraiment supprimer ce crédit?</p>
+                        <p>Type de crédit : <b><?= $credit->type ?></b></p>
+                        <p>Il reste <b><?= $credit->remaining ?></b>€ au crédit</p>
+                        <div class="row justify-content-center">
+                            <a href="<?= site_url('credits/delete/' . $credit->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 <?php } ?>
