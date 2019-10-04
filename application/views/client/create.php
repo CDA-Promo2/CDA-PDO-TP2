@@ -1,5 +1,6 @@
 <h1 class="text-center"><?= $title ?></h1>
 <hr>
+<?= form_error() ?>
 <div class="row justify-content-center">
     <div class="form col-md-12 col-lg-8 mt-5">
         <?= form_open_multipart(); ?>

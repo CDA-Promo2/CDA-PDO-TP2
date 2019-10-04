@@ -30,7 +30,7 @@
                     </li>
                 </ul>
                 <div class="row justify-content-end mt-auto">
-                    <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
+                    <a href="<?= site_url('clientsList') ?>" class="btn btn-secondary text-white mx-3"><i class="fas fa-sign-in-alt"></i> Retour</a>
                     <a href="<?= site_url('edit/' . $client->id) ?>" class="btn btn-primary text-white mx-3"><i class="fas fa-pen"></i> Modifier</a>
                 </div>
             </div>
@@ -42,8 +42,8 @@
             <i class="fas fa-coins fa-4x text-info"></i>
         </div>
         <h2 class="text-center">Crédits en cours</h2>
-        <div class="row mt-5">
-            <table class="table table-hover mt-4">
+        <div id="scroll" class="row mt-5 table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped table-bordered table-sm">
                 <thead>
                     <tr>
                         <th>Organisme</th>
@@ -65,7 +65,7 @@
                             <td><?= $credit->rate ?>%</td>
                             <td><?= $credit->negotiable == 1 ? 'oui' : 'non' ?></td>
                             <td>
-                                <a href="<?= site_url('credit/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
+                                <a href="<?= site_url('credits/edit/' . $credit->id) ?>"><i class="fas fa-edit"></i></a>
                                 <a type="button" data-toggle="modal" data-target="#delete<?= $credit->id ?>"><i class="fas fa-trash-alt text-danger"></i></i></a>
                             </td>
                         </tr>
@@ -74,24 +74,24 @@
             </table>
         </div>
         <div class="row justify-content-end mt-auto">
-            <a class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
+            <a href="<?= site_url('credits/create/'.$client->id) ?>" class="btn btn-primary text-white mr-3"><i class="fas fa-coins"></i> Ajouter un crédit</a>
         </div>
     </div>
 </div>
 
 
 <?php foreach ($credits as $credit) { ?>
-    <div class="modal fade" id="delete<?= $credit->id ?>" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content text-center">
-                <h2 class="bg-dark text-white p-2">Attention</h2>
-                <p>Voulez-vous vraiment supprimer ce crédit?</p>
-                <p>Type de crédit : <b><?= $credit->type ?></b></p>
-                <p>Il reste <b><?= $credit->remaining ?></b>€ au crédit</p>
-                <div class="row justify-content-center">
-                    <a href="<?= site_url('credit/delete/' . $credit->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
+            <div class="modal fade" id="delete<?= $credit->id ?>" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content text-center">
+                        <h2 class="bg-dark text-white p-2">Attention</h2>
+                        <p>Voulez-vous vraiment supprimer ce crédit?</p>
+                        <p>Type de crédit : <b><?= $credit->type ?></b></p>
+                        <p>Il reste <b><?= $credit->remaining ?></b>€ au crédit</p>
+                        <div class="row justify-content-center">
+                            <a href="<?= site_url('credits/delete/' . $credit->id) ?>" class="btn btn-outline-danger col-4 my-3">Confirmer</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 <?php } ?>
