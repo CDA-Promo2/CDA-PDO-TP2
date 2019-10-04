@@ -8,7 +8,7 @@ class Clients extends CI_Controller {
         parent::__construct();
         $this->load->model(['Client', 'Credit', 'Status']);
         $this->load->helper(['url', 'form', 'date']);
-        $this->load->library('form_validation');
+        $this->load->library(['form_validation','pagination']);
     }
 
     // Méthode gérant la page d'accueil
@@ -28,6 +28,14 @@ class Clients extends CI_Controller {
         $data['title'] = "Liste des Clients";
         // Récupération de tout les Clients
         $data['clients'] = $this->Client->getClients();
+        //configuration de la pagination
+        $this->load->config('pagination');
+        $config = $this->config->item('pagination_config');
+        $config['total_rows'] = $this->Client->countAll();
+        $config['base_url'] = site_url('clientsList');
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        
         // Chargement des différentes vue, avec envoi du tableau data
         $this->load->view('common/header', $data);
         $this->load->view('client/clientsList', $data);
